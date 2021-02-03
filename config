@@ -1,0 +1,3 @@
+[cmd]
+cuda_cmd = queue.pl --mem 11G
+cpu_cmd = queue.pl --mem 11G

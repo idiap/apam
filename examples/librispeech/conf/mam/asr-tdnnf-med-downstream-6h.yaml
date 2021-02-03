@@ -1,0 +1,37 @@
+# Copyright (c) 2021 Idiap Research Institute, http://www.idiap.ch/
+# Written by Apoorv Vyas <apoorv.vyas@idiap.ch>,
+
+trainer:
+  epochs: 4                           # number of training epochs
+  minibatch_size: 2                   # training batch size 
+  grad_acc_steps: 16                  # number of gradient accumulation steps, effective batchsize is 16 or 32
+  njobs_initial: 2                    # number of initial jobs
+  njobs_final: 4                      # number of final jobs
+
+optimizer:
+  lr_initial: 5e-4                    # initial learning rate   
+  lr_final: 1e-5                      # final learning rate
+  lr_upstream: 3e-5                   # learning rate for upstream, we keep this fixed to small learning rate
+  weight_decay_downstream: 0.01       # weight decay for downstream model 
+  weight_decay_upstream: 0.01         # weight decay for upstream model 
+  
+criterion:
+  l2_regularize: 5e-5                 # Output L2 regularization for LFMMI
+  leaky_hmm_coefficient: 0.1          # Leaky HMM coefficient
+  oor_regularize: 0.01                # Out of range regularization
+  xent_regularize: 0.0                # Cross entropy regularization for LFMMI
+
+dataloader:
+
+model:                                # downstream model config
+  upstream:
+    specaug: True                     # Keep specaug while training
+    encoder_feat: False               # Use encoder feats, If false use hidden feats before reconstruction as input to downstream model
+    start_new: False                  # If true, do not use pre-trained weights
+    fine_tune: True                   # If true, we finetune upstream model. If false, we freeze the model weights and only train downstream model.
+
+  downstream:
+    architecture: "tdnnf"             # Model architecture to assist loading
+    output_subsampling: 3             # output subsampling to be appliead for LFMMI
+    drop: 0.1                         # The dropout ratio.
+    size: "medium"                    # architecture specific parameters
