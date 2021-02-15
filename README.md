@@ -93,6 +93,7 @@ We provide the pretrained model for trained with masked language modeling
 objective as described in ["TERA: Self-Supervised Learning of Transformer
 Encoder Representation for Speech"](https://arxiv.org/abs/2007.06028).
 
+The pretrained model is available [here](https://zenodo.org/record/4541045#.YCpThmgzaiw).
 
 ------------------------------------
 Current Recipes

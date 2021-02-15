@@ -2,7 +2,7 @@ Please set the ```KALDI_ROOT``` correctly
 and update the ```cmd.sh``` and ```config``` according to
 correctly submit to the correct GPU and CPU queues.
 
-Download the pretrained MAM model from [here](enter a link)
+Download the pretrained MAM model from [here](https://zenodo.org/record/4541045#.YCpThmgzaiw).
 
 Follow the recipes in mam.md to finetune a model pretrained with MAM.
 
